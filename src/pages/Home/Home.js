@@ -113,7 +113,6 @@ const Home = () => {
             <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
             <Dropdown.Menu>
               <Dropdown.Item href="#/action-1">Salin Data Karyawan</Dropdown.Item>
-              {/* Add other actions if needed */}
             </Dropdown.Menu>
           </Dropdown>
         </Col>

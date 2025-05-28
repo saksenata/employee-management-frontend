@@ -4,7 +4,7 @@ import apiClient from './api'; // Use the centralized apiClient
 export const getEmployees = async (params = {}) => {
   // params could be { page: 1, limit: 10, status: 'AKTIF', search: 'John' }
   try {
-    const response = await apiClient.get('/', { params });
+    const response = await apiClient.get('/employees', { params });
     return response.data; // Assuming backend returns { success: true, data: { employees: [], totalPages: ... } }
   } catch (error) {
     console.error('Error fetching employees:', error.response?.data || error.message);
@@ -14,7 +14,7 @@ export const getEmployees = async (params = {}) => {
 
 export const getEmployeeById = async (id) => {
   try {
-    const response = await apiClient.get(`/${id}`);
+    const response = await apiClient.get(`/employees/${id}`);
     return response.data; // Assuming backend returns { success: true, data: employeeObject }
   } catch (error) {
     console.error(`Error fetching employee ${id}:`, error.response?.data || error.message);
@@ -25,7 +25,7 @@ export const getEmployeeById = async (id) => {
 // employeeData should be a FormData object if a file is included
 export const createEmployee = async (formData) => {
   try {
-    const response = await apiClient.post('/', formData, {
+    const response = await apiClient.post('/employees', formData, {
       headers: {
         // Let Axios set Content-Type for FormData, it includes boundary
         // 'Content-Type': 'multipart/form-data', // Not needed if formData is a FormData object
@@ -41,7 +41,7 @@ export const createEmployee = async (formData) => {
 // employeeData should be a FormData object if a file is included
 export const updateEmployee = async (id, formData) => {
   try {
-    const response = await apiClient.put(`/${id}`, formData, {
+    const response = await apiClient.put(`/employees/${id}`, formData, {
       headers: {
         // Let Axios set Content-Type for FormData
         // 'Content-Type': 'multipart/form-data',
@@ -56,7 +56,7 @@ export const updateEmployee = async (id, formData) => {
 
 export const deleteEmployee = async (id) => {
   try {
-    const response = await apiClient.delete(`/${id}`);
+    const response = await apiClient.delete(`/employees/${id}`);
     return response.data; // Assuming backend returns { success: true, message: '...' }
   } catch (error) {
     console.error(`Error deleting employee ${id}:`, error.response?.data || error.message);
