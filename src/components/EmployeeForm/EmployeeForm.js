@@ -8,9 +8,10 @@ import {
   Form as BootstrapForm,
   Image,
   InputGroup,
-  Spinner
+  Spinner,
+  FloatingLabel
 } from 'react-bootstrap';
-import { employeeValidationSchema } from '../../utils/validationSchemas'; // Using the new schema
+import { employeeValidationSchema } from '../../utils/validationSchemas';
 import './EmployeeForm.scss';
 
 const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
@@ -23,12 +24,9 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
 
   useEffect(() => {
     if (isEditMode && initialValues && initialValues.photoPath) {
-      // Assuming photoPath is relative to API_BASE_URL/uploads/
-      // Construct full URL if needed, or if it's already a full URL from initialValues
       const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
       setPhotoPreview(`${baseUrl}/uploads/${initialValues.photoPath}`);
     } else if (initialValues && initialValues.photo) {
-        // If photo is a File object (e.g. from a previous attempt before submission)
         const reader = new FileReader();
         reader.onloadend = () => {
             setPhotoPreview(reader.result);
@@ -49,13 +47,12 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
         initialValues={initialValues}
         validationSchema={employeeValidationSchema}
         onSubmit={onSubmit}
-        enableReinitialize // Important for edit mode to reinitialize with new initialValues
-        context={{ isEditMode }} // Pass context for conditional validation (e.g. password)
+        enableReinitialize
+        context={{ isEditMode }}
       >
         {({ isSubmitting, setFieldValue, errors, touched, values }) => (
           <FormikForm>
             <Row>
-              {/* Left Column */}
               <Col md={8}>
                 <BootstrapForm.Group as={Row} className="mb-3">
                   <BootstrapForm.Label column sm={4} htmlFor="fullName">Nama Lengkap *</BootstrapForm.Label>
@@ -118,9 +115,40 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
                       <BootstrapForm.Label htmlFor="province">Provinsi</BootstrapForm.Label>
                       <Field as={BootstrapForm.Select} name="province" id="province" isInvalid={touched.province && !!errors.province}>
                         <option value="">Pilih Provinsi</option>
-                        {/* Populate with actual data */}
-                        <option value="Jawa Barat">Jawa Barat</option>
-                        <option value="DKI Jakarta">DKI Jakarta</option>
+                        <option value="ACEH">ACEH</option>
+                        <option value="SUMATERA UTARA">SUMATERA UTARA</option>
+                        <option value="SUMATERA BARAT">SUMATERA BARAT</option>
+                        <option value="RIAU">RIAU</option>
+                        <option value="JAMBI">JAMBI</option>
+                        <option value="SUMATERA SELATAN">SUMATERA SELATAN</option>
+                        <option value="BENGKULU">BENGKULU</option>
+                        <option value="LAMPUNG">LAMPUNG</option>
+                        <option value="KEPULAUAN BANGKA BELITUNG">KEPULAUAN BANGKA BELITUNG</option>
+                        <option value="KEPULAUAN RIAU">KEPULAUAN RIAU</option>
+                        <option value="DKI JAKARTA">DKI JAKARTA</option>
+                        <option value="JAWA BARAT">JAWA BARAT</option>
+                        <option value="JAWA TENGAH">JAWA TENGAH</option>
+                        <option value="DI YOGYAKARTA">DI YOGYAKARTA</option>
+                        <option value="JAWA TIMUR">JAWA TIMUR</option>
+                        <option value="BANTEN">BANTEN</option>
+                        <option value="BALI">BALI</option>
+                        <option value="NUSA TENGGARA BARAT">NUSA TENGGARA BARAT</option>
+                        <option value="NUSA TENGGARA TIMUR">NUSA TENGGARA TIMUR</option>
+                        <option value="KALIMANTAN BARAT">KALIMANTAN BARAT</option>
+                        <option value="KALIMANTAN TENGAH">KALIMANTAN TENGAH</option>
+                        <option value="KALIMANTAN SELATAN">KALIMANTAN SELATAN</option>
+                        <option value="KALIMANTAN TIMUR">KALIMANTAN TIMUR</option>
+                        <option value="KALIMANTAN UTARA">KALIMANTAN UTARA</option>
+                        <option value="SULAWESI UTARA">SULAWESI UTARA</option>
+                        <option value="SULAWESI TENGAH">SULAWESI TENGAH</option>
+                        <option value="SULAWESI SELATAN">SULAWESI SELATAN</option>
+                        <option value="SULAWESI TENGGARA">SULAWESI TENGGARA</option>
+                        <option value="GORONTALO">GORONTALO</option>
+                        <option value="SULAWESI BARAT">SULAWESI BARAT</option>
+                        <option value="MALUKU">MALUKU</option>
+                        <option value="MALUKU UTARA">MALUKU UTARA</option>
+                        <option value="PAPUA BARAT">PAPUA BARAT</option>
+                        <option value="PAPUA">PAPUA</option>
                       </Field>
                       <BootstrapForm.Control.Feedback type="invalid">{errors.province}</BootstrapForm.Control.Feedback>
                     </BootstrapForm.Group>
@@ -130,9 +158,11 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
                       <BootstrapForm.Label htmlFor="city">Kota / Kabupaten</BootstrapForm.Label>
                       <Field as={BootstrapForm.Select} name="city" id="city" isInvalid={touched.city && !!errors.city}>
                         <option value="">Pilih Kota/Kabupaten</option>
-                        {/* Populate based on province */}
-                        <option value="Bandung">Bandung</option>
-                        <option value="Jakarta Selatan">Jakarta Selatan</option>
+                        <option value="KABUPATEN BANDUNG">KABUPATEN BANDUNG</option>
+                        <option value="KOTA BANDUNG">KOTA BANDUNG</option>
+                        <option value="KOTA JAKARTA SELATAN">KOTA JAKARTA SELATAN</option>
+                        <option value="KOTA SURABAYA">KOTA SURABAYA</option>
+                        <option value="KOTA MEDAN">KOTA MEDAN</option>
                       </Field>
                       <BootstrapForm.Control.Feedback type="invalid">{errors.city}</BootstrapForm.Control.Feedback>
                     </BootstrapForm.Group>
@@ -145,7 +175,9 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
                       <BootstrapForm.Label htmlFor="district">Kecamatan</BootstrapForm.Label>
                       <Field as={BootstrapForm.Select} name="district" id="district" isInvalid={touched.district && !!errors.district}>
                         <option value="">Pilih Kecamatan</option>
-                        {/* Populate based on city */}
+                        <option value="CIBIRU">CIBIRU</option>
+                        <option value="TEBET">TEBET</option>
+                        <option value="GUBENG">GUBENG</option>
                       </Field>
                       <BootstrapForm.Control.Feedback type="invalid">{errors.district}</BootstrapForm.Control.Feedback>
                     </BootstrapForm.Group>
@@ -155,18 +187,38 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
                       <BootstrapForm.Label htmlFor="village">Kelurahan</BootstrapForm.Label>
                       <Field as={BootstrapForm.Select} name="village" id="village" isInvalid={touched.village && !!errors.village}>
                         <option value="">Pilih Kelurahan</option>
-                        {/* Populate based on district */}
+                        <option value="CISURUPAN">CISURUPAN</option>
+                        <option value="TEBET TIMUR">TEBET TIMUR</option>
+                        <option value="AIRLANGGA">AIRLANGGA</option>
                       </Field>
                       <BootstrapForm.Control.Feedback type="invalid">{errors.village}</BootstrapForm.Control.Feedback>
                     </BootstrapForm.Group>
                   </Col>
                 </Row>
 
-                <BootstrapForm.Group className="mb-3">
-                  <BootstrapForm.Label htmlFor="addressDetail">Detil Alamat</BootstrapForm.Label>
-                  <Field as={BootstrapForm.Control} component="textarea" rows={3} name="addressDetail" id="addressDetail" isInvalid={touched.addressDetail && !!errors.addressDetail} />
-                  <BootstrapForm.Control.Feedback type="invalid">{errors.addressDetail}</BootstrapForm.Control.Feedback>
-                </BootstrapForm.Group>
+                <Field name="addressDetail">
+                  {({ field, meta }) => (
+                    <FloatingLabel
+                      controlId="addressDetail"
+                      label="Detil Alamat"
+                      className="mb-3"
+                    >
+                      <BootstrapForm.Control
+                        as="textarea"
+                        rows={5}
+                        placeholder="Masukkan nama jalan, nomor rumah, RT/RW, dan detail lainnya..."
+                        {...field}
+                        isInvalid={meta.touched && !!meta.error}
+                        style={{ height: '100px' }}
+                      />
+                      {meta.touched && meta.error && (
+                        <BootstrapForm.Control.Feedback type="invalid">
+                          {meta.error}
+                        </BootstrapForm.Control.Feedback>
+                      )}
+                    </FloatingLabel>
+                  )}
+                </Field>
 
                 <BootstrapForm.Group className="mb-3">
                   <BootstrapForm.Label htmlFor="photo">Foto Karyawan</BootstrapForm.Label>
@@ -197,7 +249,6 @@ const EmployeeForm = ({ initialValues, onSubmit, isEditMode, loading }) => {
                 </BootstrapForm.Group>
               </Col>
 
-              {/* Right Column */}
               <Col md={4}>
                 <BootstrapForm.Group className="mb-3">
                   <BootstrapForm.Label htmlFor="username">Username *</BootstrapForm.Label>
