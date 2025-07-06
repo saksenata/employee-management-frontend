@@ -1,7 +1,8 @@
 {
-  "/users/page": "app/users/page.js",
-  "/users/[id]/edit/page": "app/users/[id]/edit/page.js",
   "/login/page": "app/login/page.js",
   "/inventories/page": "app/inventories/page.js",
-  "/users/add/page": "app/users/add/page.js"
+  "/users/page": "app/users/page.js",
+  "/users/[id]/edit/page": "app/users/[id]/edit/page.js",
+  "/users/[id]/change-password/page": "app/users/[id]/change-password/page.js",
+  "/inventories/[id]/edit/page": "app/inventories/[id]/edit/page.js"
 }

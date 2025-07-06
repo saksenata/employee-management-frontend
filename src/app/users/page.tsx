@@ -104,7 +104,7 @@ function UsersPage() {
         <table className="min-w-full bg-white">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b text-left">ID</th>
+              <th className="py-2 px-4 border-b text-left">No.</th>
               <th className="py-2 px-4 border-b text-left">Name</th>
               <th className="py-2 px-4 border-b text-left hidden md:table-cell">Email</th>
               <th className="py-2 px-4 border-b text-left hidden sm:table-cell">Image</th>
@@ -112,10 +112,10 @@ function UsersPage() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {users.map((user, index) => {
               return (
                 <tr key={user.id} className="hover:bg-gray-50">
-                  <td className="py-2 px-4 border-b">{user.id}</td>
+                  <td className="py-2 px-4 border-b">{index + 1}</td>
                   <td className="py-2 px-4 border-b font-medium">{user.name}</td>
                   <td className="py-2 px-4 border-b hidden md:table-cell">{user.email}</td>
                   <td className="py-2 px-4 border-b hidden sm:table-cell">
