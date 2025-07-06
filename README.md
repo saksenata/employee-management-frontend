@@ -1,139 +1,215 @@
 # Employee Management System - Frontend
 
-This is the frontend application for the Employee Management System, built with React.js, Bootstrap, and SCSS.
+A modern, responsive employee management system built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**. This application provides comprehensive inventory and user management with secure authentication and beautiful UI.
 
-## Features
+## 🚀 Features
 
--   Display list of employees with search, filter, and pagination.
--   Add new employees with form validation.
--   Edit existing employees with form validation.
--   Upload employee photos.
--   Responsive design.
--   Clean architecture (Components, Pages, Services).
+### Authentication & Security
+- **JWT-based authentication** with automatic token refresh
+- **Auto-logout** on inactivity and token expiration
+- **Protected routes** with role-based access control
+- **Secure cookie management** for session persistence
 
-## Prerequisites
+### Inventory Management
+- **Complete CRUD operations** (Create, Read, Update, Delete)
+- **Image upload and display** with authenticated image fetching
+- **Search and filtering** capabilities
+- **Responsive data tables** with pagination
+- **Form validation** with React Hook Form and Zod
+- **Delete confirmation dialogs** with web-based alerts
 
--   Node.js (v14 or later recommended)
--   npm or yarn
+### User Management
+- **Full user lifecycle management** (add, edit, delete, view)
+- **Profile picture upload** with authenticated display
+- **Role-based user management**
+- **Form validation** and error handling
+- **Responsive design** for all screen sizes
 
-## Setup
+### UI/UX Features
+- **Modern, responsive design** with Tailwind CSS
+- **Dark/light theme support** (ready for implementation)
+- **Mobile-first approach** with hamburger menu
+- **Loading states** and error handling
+- **Toast notifications** and alert dialogs
+- **Consistent styling** across all pages
 
-1.  **Clone the repository (or ensure you are in the `employee-management-frontend` directory).**
+## 🛠️ Tech Stack
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    # or
-    # yarn install
-    ```
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Forms**: React Hook Form with Zod validation
+- **HTTP Client**: Axios with interceptors
+- **Authentication**: JWT with automatic refresh
+- **UI Components**: Custom components with Tailwind
+- **State Management**: React hooks and context
 
-3.  **Set up environment variables:**
-    Create a `.env` file in the root of the `employee-management-frontend` directory. This file is used to configure the backend API URL.
+## 📋 Prerequisites
 
-    ```env
-    REACT_APP_API_BASE_URL=http://localhost:5000/api
-    ```
-    -   `REACT_APP_API_BASE_URL`: The base URL of your running backend API. If your backend is running on a different port or domain, update this value accordingly. The default assumes the backend is running on `http://localhost:5000` and API routes are prefixed with `/api`.
+- **Node.js** (v18 or later recommended)
+- **npm** or **yarn**
+- **Backend API** running (for data operations)
 
-## Running the Application
+## 🚀 Quick Start
 
-1.  **Start the development server:**
-    ```bash
-    npm start
-    ```
-    This command starts the React development server. The application will typically open automatically in your default web browser at `http://localhost:3000`. If it doesn't, you can navigate to this URL manually. The server watches for file changes and reloads the application automatically.
-
-2.  **Build for production:**
-    ```bash
-    npm run build
-    ```
-    This command creates an optimized production build of your application in the `build/` directory. These static files can then be deployed to any static file hosting service.
-
-## Project Structure
-
-```
-employee-management-frontend/
-├── public/
-│   ├── index.html          # Main HTML file
-│   └── ...                 # Other static assets
-├── src/
-│   ├── App.js              # Main application component with routing
-│   ├── App.scss            # Global and layout styles
-│   ├── index.js            # Entry point of the React application
-│   ├── index.scss          # Additional global styles (often imports App.scss)
-│   ├── components/
-│   │   ├── EmployeeForm/
-│   │   │   ├── EmployeeForm.js
-│   │   │   └── EmployeeForm.scss
-│   │   ├── EmployeeList/
-│   │   │   ├── EmployeeList.js
-│   │   │   └── EmployeeList.scss
-│   │   └── Layout/
-│   │       ├── Header.js
-│   │       ├── Sidebar.js
-│   │       ├── Layout.js
-│   │       └── index.js      # Exports Layout component
-│   ├── pages/
-│   │   ├── AddEmployee/
-│   │   │   ├── AddEmployee.js
-│   │   │   └── AddEmployee.scss
-│   │   ├── EditEmployee/
-│   │   │   ├── EditEmployee.js
-│   │   │   └── EditEmployee.scss
-│   │   └── Home/
-│   │       ├── Home.js
-│   │       └── Home.scss
-│   ├── services/
-│   │   ├── api.js            # Centralized Axios client configuration
-│   │   └── employeeService.js # Functions for employee API calls
-│   └── utils/
-│       └── validationSchemas.js # Yup validation schemas for forms
-├── .env                    # Environment variables (create this file)
-├── .gitignore
-├── package.json
-├── package-lock.json
-└── README.md
+### 1. Clone and Install
+```bash
+git clone <repository-url>
+cd employee-management-frontend
+npm install
 ```
 
-## Key Libraries Used
+### 2. Environment Setup
+Create a `.env.local` file in the root directory:
+```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api
+```
 
--   **React.js**: For building the user interface.
--   **React Router**: For handling client-side routing.
--   **Axios**: For making HTTP requests to the backend API.
--   **Bootstrap & React-Bootstrap**: For UI components and styling.
--   **Sass**: For advanced CSS styling.
--   **Formik**: For building and managing forms.
--   **Yup**: For form validation.
+### 3. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Available Scripts
+### 4. Build for Production
+```bash
+npm run build
+npm start
+```
 
-In the project directory, you can run:
+## 📁 Project Structure
 
-### `npm start`
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── inventories/        # Inventory management pages
+│   │   ├── add/           # Add inventory page
+│   │   ├── [id]/          # Dynamic inventory pages
+│   │   │   └── edit/      # Edit inventory page
+│   │   └── page.tsx       # Inventory list page
+│   ├── users/             # User management pages
+│   │   ├── add/           # Add user page
+│   │   ├── [id]/          # Dynamic user pages
+│   │   │   └── edit/      # Edit user page
+│   │   └── page.tsx       # User list page
+│   ├── login/             # Authentication page
+│   │   └── page.tsx
+│   ├── layout.tsx         # Root layout with providers
+│   └── page.tsx           # Home page (redirects to inventories)
+├── components/            # Reusable UI components
+│   ├── AuthenticatedImage/ # Image component with auth headers
+│   ├── InventoryForm/     # Reusable inventory form
+│   ├── UserForm/          # Reusable user form
+│   ├── Alert/             # Custom alert component
+│   ├── Header/            # Application header
+│   ├── Sidebar/           # Navigation sidebar
+│   └── Layout/            # Main layout wrapper
+├── hooks/                 # Custom React hooks
+│   ├── useAuth.ts         # Authentication hook
+│   └── withAuth.tsx       # HOC for protected routes
+├── services/              # API service layer
+│   ├── inventoryService.ts # Inventory API calls
+│   ├── userService.ts     # User API calls
+│   └── authService.ts     # Authentication API calls
+├── types/                 # TypeScript type definitions
+│   ├── inventory.ts       # Inventory-related types
+│   ├── user.ts           # User-related types
+│   └── auth.ts           # Authentication types
+├── utils/                 # Utility functions
+│   ├── auth.ts           # Authentication utilities
+│   └── validation.ts     # Form validation schemas
+└── styles/               # Global styles
+    └── globals.css       # Tailwind CSS imports
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🔧 Key Features Explained
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Authentication Flow
+- **Login**: JWT tokens stored in secure cookies
+- **Auto-refresh**: Automatic token refresh on API calls
+- **Logout**: Clears cookies and redirects to login
+- **Protected Routes**: HOC wrapper for route protection
 
-### `npm test`
+### Image Handling
+- **AuthenticatedImage Component**: Fetches images with auth headers
+- **Automatic token refresh**: Handles 401 errors by refreshing tokens
+- **Fallback display**: Shows placeholder when images fail to load
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Form Management
+- **React Hook Form**: Efficient form handling with minimal re-renders
+- **Zod Validation**: Type-safe form validation
+- **File Upload**: Image upload with preview
+- **Error Handling**: Comprehensive error display and handling
 
-### `npm run build`
+### Responsive Design
+- **Mobile-first**: Optimized for all screen sizes
+- **Hamburger Menu**: Collapsible sidebar for mobile
+- **Flexible Layouts**: Adaptive tables and forms
+- **Touch-friendly**: Optimized for touch interactions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎨 UI Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Custom Components
+- **Alert**: Web-based confirmation dialogs
+- **AuthenticatedImage**: Secure image display
+- **InventoryForm**: Reusable inventory form
+- **UserForm**: Reusable user form
+- **Layout**: Responsive layout wrapper
 
-### `npm run eject`
+### Styling
+- **Tailwind CSS**: Utility-first CSS framework
+- **Custom Components**: Consistent design system
+- **Responsive Breakpoints**: Mobile, tablet, desktop
+- **Loading States**: Skeleton loaders and spinners
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🔒 Security Features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **JWT Authentication**: Secure token-based auth
+- **HTTP-only Cookies**: Secure cookie storage
+- **CORS Handling**: Proper cross-origin requests
+- **Input Validation**: Server and client-side validation
+- **XSS Protection**: Sanitized inputs and outputs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of a sudden done, `eject` provides a lot more flexibility in customizing the build process, but it also means you have to maintain these configurations yourself.
+## 📱 Browser Support
+
+- **Chrome** (latest)
+- **Firefox** (latest)
+- **Safari** (latest)
+- **Edge** (latest)
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+npm run build
+# Deploy to Vercel with automatic builds
+```
+
+### Other Platforms
+```bash
+npm run build
+# Deploy the 'out' directory to any static hosting
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the documentation
+- Review the code examples
+
+---
+
+**Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**

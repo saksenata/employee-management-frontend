@@ -1,14 +1,22 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = 'https://api.nanspace.top/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    // Add the dummy authentication header
-    'X-Dummy-Auth': 'allowed', // As defined in the backend dummy auth middleware
   },
+});
+
+// Add request interceptor to include auth token
+apiClient.interceptors.request.use((config) => {
+  const token = Cookies.get('accessToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 export default apiClient;
