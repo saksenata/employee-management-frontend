@@ -1,0 +1,126 @@
+.employee-list-container {
+  .employee-list-header {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.75rem 0; // Adjust as needed based on Card.Body padding
+    border-bottom: 1px solid #dee2e6; // Light border for header
+    margin-left: 0; // Align with cards
+    margin-right: 0; // Align with cards
+    // Ensure column paddings match card body for alignment
+    .col-md-1, .col-md-5, .col-md-2, .col-md-4 {
+        padding-left: 1.25rem; // Default Card.Body padding
+        padding-right: 1.25rem; // Default Card.Body padding
+    }
+     .col-md-1.text-center, .col-md-2.text-center, .col-md-4.text-center {
+        // padding specific to center alignment if needed
+    }
+  }
+
+  .employee-card {
+    border: 1px solid #e9ecef;
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075), 0 0.5rem 1.5rem rgba(0,0,0,0.05);
+    }
+
+    .card-body {
+      padding: 1rem 1.25rem; // Consistent padding
+    }
+
+    .employee-index {
+      font-weight: 500;
+      color: #6c757d;
+      font-size: 1.1rem;
+      align-self: center; // Vertically center the index number
+    }
+
+    .employee-photo {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .employee-photo-placeholder {
+      width: 50px;
+      height: 50px;
+      background-color: #e9ecef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #adb5bd;
+      font-size: 1.8rem; // Icon size
+    }
+
+    .employee-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #343a40;
+    }
+
+    .employee-type {
+      font-size: 0.85rem;
+    }
+
+    .employee-status-badge {
+      padding: 0.4em 0.7em;
+      font-size: 0.8rem;
+      min-width: 70px; // Ensure badges have a decent width
+      text-transform: uppercase;
+    }
+    
+    .employee-status-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .employee-actions {
+      display: flex;
+      justify-content: center; // Center actions for larger screens
+      align-items: center;
+      gap: 0.5rem; // Space between action buttons
+    }
+
+    .action-icon-btn {
+      color: #6c757d; // Default icon color
+      &:hover {
+        color: #343a40;
+      }
+      i {
+        vertical-align: middle;
+      }
+    }
+    .action-details-btn {
+        border-radius: 50%; // Make it circular
+        width: 38px;       // Fixed width
+        height: 38px;      // Fixed height
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        i {
+            font-size: 1.2rem; // Adjust icon size within the circle
+        }
+    }
+  }
+}
+
+// Responsive adjustments for the list itself
+@media (max-width: 767.98px) {
+  .employee-list-container {
+    .employee-card {
+      .employee-index, .employee-status-col, .employee-actions {
+        text-align: left !important; // Align left on small screens
+        margin-top: 0.5rem;
+      }
+      .employee-actions {
+        justify-content: flex-start; // Align actions to start
+      }
+      .employee-status-col {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
