@@ -106,7 +106,7 @@ function InventoriesPage() {
         <table className="min-w-full bg-white">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b text-left">No.</th>
+              <th className="py-2 px-4 border-b text-left">ID</th>
               <th className="py-2 px-4 border-b text-left">Name</th>
               <th className="py-2 px-4 border-b text-left hidden md:table-cell">Code</th>
               <th className="py-2 px-4 border-b text-left hidden lg:table-cell">Description</th>
@@ -116,10 +116,10 @@ function InventoriesPage() {
             </tr>
           </thead>
           <tbody>
-            {inventories.map((inventory, index) => {
+            {inventories.map((inventory) => {
               return (
                 <tr key={inventory.id} className="hover:bg-gray-50">
-                  <td className="py-2 px-4 border-b">{index + 1}</td>
+                  <td className="py-2 px-4 border-b">{inventory.id}</td>
                   <td className="py-2 px-4 border-b font-medium">{inventory.name}</td>
                   <td className="py-2 px-4 border-b hidden md:table-cell">{inventory.code}</td>
                   <td className="py-2 px-4 border-b hidden lg:table-cell truncate max-w-xs">{inventory.description}</td>
